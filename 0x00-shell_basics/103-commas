@@ -1,3 +1,2 @@
 #!/bin/bash
-ls -a1 | sort -n | printf "%s," $(echo -n './' && sed '1d' && echo '.' && echo '..') $(grep -v '^\.\?$' | sed 's/$/\//' | tr '\n' ',') && printf "\n"
-
+ls -1a | sed 's/$/,/' | sort -n | sed 's/^\.$/\.\//; s/^\.\.$/\.\.\/;/;$s/,$/\n/'
